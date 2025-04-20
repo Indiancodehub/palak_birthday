@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Birthday Blessings for Palak</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+        }
+        
+        /* Divine Light Background */
+        .divine-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+            z-index: -2;
+            animation: lightPulse 8s infinite alternate;
+        }
+        
+        /* Floating Devotional Elements */
+        .floating-om {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: gold;
+            z-index: -1;
+            animation: floatOm 20s linear infinite;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Grand Birthday Entrance */
+        .birthday-entrance {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .birthday-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            background: linear-gradient(45deg, #f5d742, #f5a742, #f57c42);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(245, 215, 66, 0.5);
+            transform: scale(0);
+            opacity: 0;
+            animation: titleEntrance 1.5s forwards 0.5s;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: subtitleEntrance 1s forwards 1.5s;
+        }
+        
+        /* Divine Blessing Section */
+        .blessing-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 2s;
+        }
+        
+        .blessing-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #f5d742;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .blessing-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f5d742, transparent);
+            margin: 15px auto;
+        }
+        
+        .blessing-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        /* Divine Image */
+        .divine-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(245, 215, 66, 0.3);
+            box-shadow: 0 0 40px rgba(245, 215, 66, 0.4);
+            margin: 30px auto;
+            display: block;
+            animation: divineGlow 4s infinite alternate;
+            transition: all 0.5s;
+        }
+        
+        .divine-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(245, 215, 66, 0.6);
+        }
+        
+        /* Spiritual Gallery */
+        .spiritual-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+        
+        .spiritual-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+            position: relative;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        
+        .spiritual-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .spiritual-card:hover {
+            transform: perspective(1000px) rotateY(10deg) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .spiritual-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Blessing Buttons */
+        .blessing-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .blessing-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #f5d742, #f5a742);
+            color: #1a1a2e;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 5px 15px rgba(245, 215, 66, 0.4);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+        }
+        
+        .blessing-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(245, 215, 66, 0.6);
+        }
+        
+        .blessing-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .blessing-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Divine Message */
+        .divine-message {
+            background: rgba(22, 33, 62, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 50px 0;
+            border-left: 5px solid #f5d742;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: fadeInRight 1s forwards 2.5s;
+        }
+        
+        .divine-message p {
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+        }
+        
+        .divine-message .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #f5d742;
+            text-align: right;
+            margin-top: 20px;
+        }
+        
+        /* Footer with Blessings */
+        .footer-blessings {
+            text-align: center;
+            padding: 50px 0;
+            position: relative;
+        }
+        
+        .footer-blessings p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .om-symbol {
+            font-size: 3rem;
+            color: #f5d742;
+            display: inline-block;
+            margin: 20px 0;
+            animation: omSpin 8s infinite linear;
+        }
+        
+        /* Enhanced Floating Flowers */
+        .flower {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0;
+            z-index: 10;
+            pointer-events: none;
+            animation: flowerFall linear forwards;
+            transform: translateY(-100px);
+        }
+        
+        /* Keyframe Animations */
+        @keyframes titleEntrance {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes subtitleEntrance {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInRight {
+            0% { transform: translateX(-50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes divineGlow {
+            0% { box-shadow: 0 0 30px rgba(245, 215, 66, 0.4); }
+            100% { box-shadow: 0 0 50px rgba(245, 215, 66, 0.7); }
+        }
+        
+        @keyframes lightPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        @keyframes floatOm {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50vw, 30vh) rotate(90deg); }
+            50% { transform: translate(80vw, 60vh) rotate(180deg); }
+            75% { transform: translate(30vw, 80vh) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        @keyframes omSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes flowerFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .birthday-title {
+                font-size: 4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .blessing-title {
+                font-size: 2.5rem;
+            }
+            
+            .spiritual-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .blessing-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .blessing-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Divine Background Elements -->
+    <div class="divine-light"></div>
+    
+    <!-- Floating Om Symbols -->
+    <div class="floating-om" style="top: 20%; left: 10%;">ॐ</div>
+    <div class="floating-om" style="top: 60%; left: 80%; animation-delay: 5s;">ॐ</div>
+    <div class="floating-om" style="top: 30%; left: 70%; animation-delay: 10s;">ॐ</div>
+    <div class="floating-om" style="top: 80%; left: 20%; animation-delay: 15s;">ॐ</div>
+    
+    <div class="container">
+        <!-- Grand Birthday Entrance -->
+        <section class="birthday-entrance">
+            <h1 class="birthday-title">Happy Birthday Palak Tiwari</h1>
+            <p class="subtitle">May Lord Shree Ram bless you with health, happiness and success</p>
+            
+            <img src="palak.png" alt="Palak Tiwari" class="divine-image">
+            
+            <div class="blessing-buttons">
+                <button class="blessing-button" id="blessingsBtn">Receive Blessings</button>
+                <button class="blessing-button" id="flowersBtn">Divine Flowers</button>
+                <button class="blessing-button" id="scrollDownBtn">Scroll Down</button>
+            </div>
+        </section>
+        
+        <!-- Divine Blessing Section -->
+        <section class="blessing-section">
+            <h2 class="blessing-title">Divine Birthday Wishes</h2>
+            <p class="blessing-text">
+                On this sacred day of your birth, may Lord Ram shower you with boundless blessings. 
+                May Mata Sita's grace fill your life with love and purity. 
+                Like Lord Hanuman's strength, may you overcome all obstacles.
+            </p>
+            <p class="blessing-text">
+                As the sun rises on your special day, may it bring with it divine light that guides your path, 
+                illuminates your dreams, and blesses you with a long, healthy, and prosperous life.
+            </p>
+            
+            <div class="spiritual-gallery">
+                <div class="spiritual-card">
+                    <img src="https://wishes143.com/wp-content/uploads/2024/02/wallpapers-of-ram-lalla-scaled.jpg" alt="Lord Shree Ram">
+                </div>
+                <div class="spiritual-card">
+                    <img src="https://w0.peakpx.com/wallpaper/295/249/HD-wallpaper-shree-ram-and-mata-sita-sitting-on-thrones-shree-ram-mata-sita-sitting-on-thrones-god.jpg" alt="Mata Sita">
+                </div>
+                <div class="spiritual-card">
+                    <img src="https://th.bing.com/th/id/OIP.-Jqhzb_Ufd0IgopIG21S1QHaI-?w=720&h=873&rs=1&pid=ImgDetMain" alt="Lord Hanuman">
+                </div>
+                <div class="spiritual-card">
+                    <img src="5.png" alt="Palak 1">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Personalized Divine Message -->
+        <section class="divine-message">
+            <p>
+                "Dear Palak, on this auspicious day, may the divine trinity - Brahma, Vishnu, and Mahesh - 
+                bless you with creativity, sustenance, and transformation in your life's journey."
+            </p>
+            <p>
+                "As you celebrate another year of your beautiful existence, remember that you are blessed 
+                with divine love and protection. May your path always be illuminated by the light of God."
+            </p>
+            <p>
+                "This digital offering is created with devotion by Anand Pratap Singh, praying for your 
+                health, happiness and long life. Shree Ram ji aapko lambi umar de, sukh-samriddhi de, 
+                aur har manokamna puri kare."
+            </p>
+            <div class="signature">Anand Pratap Singh</div>
+        </section>
+        
+        <!-- Footer with Blessings -->
+        <section class="footer-blessings">
+            <div class="om-symbol">ॐ</div>
+            <p>May your life be filled with divine blessings and joy</p>
+            <p>Created with devotion and best wishes for your birthday</p>
+        </section>
+    </div>
+    
+    <audio id="mantraAudio" src="shree.mp3"></audio>
+    
+    <script>
+        // Enhanced Flower Creation Function
+        function createFlowers(count) {
+            const flowers = ['🌸', '🌺', '🌼', '🏵️', '🌹', '🌻', '🌷'];
+            const sizes = ['1.5rem', '2rem', '2.5rem', '3rem'];
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower';
+                    flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+                    flower.style.left = Math.random() * 100 + 'vw';
+                    flower.style.fontSize = sizes[Math.floor(Math.random() * sizes.length)];
+                    flower.style.animationDuration = Math.random() * 5 + 5 + 's';
+                    flower.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    // Random rotation and scale
+                    const rotation = Math.random() * 360;
+                    const scale = Math.random() * 0.5 + 0.5;
+                    flower.style.transform = `translateY(-100px) rotate(${rotation}deg) scale(${scale})`;
+                    
+                    document.body.appendChild(flower);
+                    
+                    // Remove flower after animation
+                    setTimeout(() => {
+                        flower.remove();
+                    }, 10000);
+                }, i * 200);
+            }
+        }
+        
+        // Blessings button
+        document.getElementById('blessingsBtn').addEventListener('click', function() {
+            // Play mantra audio
+            const audio = document.getElementById('mantraAudio');
+            audio.play();
+            
+            // Create divine light effect
+            const light = document.createElement('div');
+            light.style.position = 'fixed';
+            light.style.top = '0';
+            light.style.left = '0';
+            light.style.width = '100%';
+            light.style.height = '100%';
+            light.style.background = 'radial-gradient(circle at center, rgba(245,215,66,0.5) 0%, transparent 70%)';
+            light.style.zIndex = '999';
+            light.style.pointerEvents = 'none';
+            light.style.animation = 'fadeOut 2s forwards';
+            
+            document.body.appendChild(light);
+            
+            // Add fade animation
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fadeOut {
+                    0% { opacity: 1; }
+                    100% { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Create blessing text
+            const blessingText = document.createElement('div');
+            blessingText.textContent = 'श्री राम आपको आशीर्वाद दें!';
+            blessingText.style.position = 'fixed';
+            blessingText.style.top = '50%';
+            blessingText.style.left = '50%';
+            blessingText.style.transform = 'translate(-50%, -50%)';
+            blessingText.style.fontSize = '2.5rem';
+            blessingText.style.color = '#f5d742';
+            blessingText.style.zIndex = '1000';
+            blessingText.style.textShadow = '0 0 10px rgba(0,0,0,0.5)';
+            blessingText.style.animation = 'fadeInOut 3s forwards';
+            
+            document.body.appendChild(blessingText);
+            
+            // Add fade animation
+            const style2 = document.createElement('style');
+            style2.innerHTML = `
+                @keyframes fadeInOut {
+                    0% { opacity: 0; transform: translate(-50%, -40%); }
+                    20% { opacity: 1; transform: translate(-50%, -50%); }
+                    80% { opacity: 1; transform: translate(-50%, -50%); }
+                    100% { opacity: 0; transform: translate(-50%, -60%); }
+                }
+            `;
+            document.head.appendChild(style2);
+            
+            setTimeout(() => {
+                light.remove();
+                blessingText.remove();
+                style.remove();
+                style2.remove();
+            }, 3000);
+        });
+        
+        // Flowers button - now creates flowers across full screen
+        document.getElementById('flowersBtn').addEventListener('click', function() {
+            createFlowers(30); // Increased number of flowers
+            
+            // Add some extra sparkle
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = '✨';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    sparkle.style.fontSize = '1.5rem';
+                    sparkle.style.zIndex = '10';
+                    sparkle.style.animation = 'sparkle 1s forwards';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    // Add sparkle animation
+                    const style = document.createElement('style');
+                    style.innerHTML = `
+                        @keyframes sparkle {
+                            0% { transform: scale(0.5); opacity: 0; }
+                            50% { transform: scale(1.2); opacity: 1; }
+                            100% { transform: scale(0); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    setTimeout(() => {
+                        sparkle.remove();
+                        style.remove();
+                    }, 1000);
+                }, i * 100);
+            }
+        });
+        
+        // Scroll down button
+        document.getElementById('scrollDownBtn').addEventListener('click', function() {
+            window.scrollBy({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Create some initial flowers
+        window.addEventListener('load', function() {
+            createFlowers(10); // More initial flowers
+            
+            // Add floating flowers periodically
+            setInterval(() => {
+                if (Math.random() > 0.5) {
+                    createFlowers(3);
+                }
+            }, 3000);
+        });
+        
+        // Divine image click effect
+        const divineImage = document.querySelector('.divine-image');
+        divineImage.addEventListener('click', function(e) {
+            // Create ripple effect
+            const ripple = document.createElement('div');
+            ripple.style.position = 'fixed';
+            ripple.style.width = '0';
+            ripple.style.height = '0';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(245, 215, 66, 0.3)';
+            ripple.style.transform = 'translate(-50%, -50%)';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            ripple.style.zIndex = '999';
+            ripple.style.pointerEvents = 'none';
+            
+            document.body.appendChild(ripple);
+            
+            // Animate ripple
+            const size = Math.max(window.innerWidth, window.innerHeight) * 0.5;
+            const animation = ripple.animate([
+                { width: '0', height: '0', opacity: 1 },
+                { width: size + 'px', height: size + 'px', opacity: 0 }
+            ], {
+                duration: 1500,
+                easing: 'ease-out'
+            });
+            
+            animation.onfinish = () => ripple.remove();
+            
+            // Create floating om symbols
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const om = document.createElement('div');
+                    om.textContent = 'ॐ';
+                    om.style.position = 'fixed';
+                    om.style.left = e.clientX + 'px';
+                    om.style.top = e.clientY + 'px';
+                    om.style.fontSize = '2rem';
+                    om.style.color = '#f5d742';
+                    om.style.zIndex = '999';
+                    om.style.animation = `floatUp ${Math.random() * 2 + 1}s forwards`;
+                    om.style.transform = 'translate(-50%, -50%)';
+                    
+                    document.body.appendChild(om);
+                    
+                    // Add float animation
+                    const style = document.createElement('style');
+                    style.innerHTML = `
+                        @keyframes floatUp {
+                            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+                            20% { transform: translate(-50%, -60%) scale(1.2); opacity: 1; }
+                            100% { transform: translate(-50%, -150px) scale(0.8); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    setTimeout(() => {
+                        om.remove();
+                        style.remove();
+                    }, 2000);
+                }, i * 300);
+            }
+            
+            // Create some flowers around the click point
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower';
+                    flower.innerHTML = ['🌸', '🌺', '🌼'][Math.floor(Math.random() * 3)];
+                    flower.style.left = e.clientX + (Math.random() * 200 - 100) + 'px';
+                    flower.style.top = e.clientY + 'px';
+                    flower.style.fontSize = '1.8rem';
+                    flower.style.animationDuration = Math.random() * 3 + 2 + 's';
+                    flower.style.animationDelay = '0s';
+                    
+                    document.body.appendChild(flower);
+                    
+                    setTimeout(() => {
+                        flower.remove();
+                    }, 5000);
+                }, i * 100);
+            }
+        });
+        
+        // Make flowers fall from top to bottom of entire screen
+        function updateFlowerAnimation() {
+            const flowers = document.querySelectorAll('.flower');
+            flowers.forEach(flower => {
+                const startY = -100;
+                const endY = window.innerHeight + 100;
+                const duration = parseFloat(flower.style.animationDuration) * 1000 || 5000;
+                
+                flower.style.transform = `translateY(${startY}px)`;
+                
+                const animation = flower.animate([
+                    { transform: `translateY(${startY}px)`, opacity: 0 },
+                    { transform: `translateY(${endY/3}px)`, opacity: 1 },
+                    { transform: `translateY(${endY}px)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'linear'
+                });
+                
+                animation.onfinish = () => flower.remove();
+            });
+        }
+        
+        // Initialize flower animation
+        updateFlowerAnimation();
+    </script>
+</body>
+</html>

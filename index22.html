@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wishes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .card {
+            position: relative;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            padding: 30px;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .card:hover {
+            transform: rotateY(10deg) rotateX(10deg);
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .cake {
+            font-size: 80px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .cake:hover {
+            transform: scale(1.2);
+        }
+        
+        .balloons {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0;
+        }
+        
+        .btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #ff4757;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .message {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div id="main-content">
+            <h1>Happy Birthday!</h1>
+            <div class="cake" id="cake">🎂</div>
+            <p>Click on the cake to see a surprise!</p>
+            <p>Wishing you an amazing year ahead filled with joy and success!</p>
+            <button class="btn" id="wish-btn">Click for Special Wish</button>
+        </div>
+        
+        <div id="special-message" class="hidden">
+            <h1>🎉 Special Birthday Wish! 🎉</h1>
+            <div class="message">
+                <p>May your code always compile on the first try!</p>
+                <p>May your bugs be minimal and easy to fix!</p>
+                <p>And may your coffee be strong enough to power through all your projects!</p>
+            </div>
+            <button class="btn" id="back-btn">Back to Card</button>
+        </div>
+    </div>
+
+    <script>
+        // Cake click animation
+        const cake = document.getElementById('cake');
+        const wishBtn = document.getElementById('wish-btn');
+        const backBtn = document.getElementById('back-btn');
+        const mainContent = document.getElementById('main-content');
+        const specialMessage = document.getElementById('special-message');
+        
+        cake.addEventListener('click', function() {
+            // Create balloons
+            createBalloons(10);
+            
+            // Cake animation
+            this.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 300);
+        });
+        
+        // Button to show special message
+        wishBtn.addEventListener('click', function() {
+            mainContent.classList.add('hidden');
+            specialMessage.classList.remove('hidden');
+            createBalloons(20);
+        });
+        
+        // Back button
+        backBtn.addEventListener('click', function() {
+            specialMessage.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+        });
+        
+        // Function to create floating balloons
+        function createBalloons(count) {
+            const colors = ['🎈', '🎈', '🎈', '🎉', '🎊', '🎁'];
+            const card = document.querySelector('.card');
+            
+            for (let i = 0; i < count; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloons';
+                balloon.textContent = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random position
+                const left = Math.random() * 100;
+                const animationDuration = Math.random() * 3 + 2;
+                
+                balloon.style.left = `${left}%`;
+                balloon.style.top = '100%';
+                balloon.style.fontSize = `${Math.random() * 20 + 20}px`;
+                
+                card.appendChild(balloon);
+                
+                // Animate balloon
+                setTimeout(() => {
+                    balloon.style.opacity = '1';
+                    balloon.style.transition = `all ${animationDuration}s linear`;
+                    balloon.style.transform = `translateY(-${Math.random() * 100 + 100}%) translateX(${Math.random() * 50 - 25}px)`;
+                    
+                    // Remove balloon after animation
+                    setTimeout(() => {
+                        balloon.remove();
+                    }, animationDuration * 1000);
+                }, 0);
+            }
+        }
+    </script>
+</body>
+</html>
